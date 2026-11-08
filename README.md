@@ -2,6 +2,9 @@
 
 Personal portfolio web app built with **React + Vite**, **Tailwind CSS** and an **Express** API server, deployed on **Google Cloud Run**.
 
+- **Live site:** https://portfolio-892552793261.us-central1.run.app
+- **Repository:** https://github.com/marslenderandrew-hub/fa26_ia3_amarsle
+
 ## Pages
 - **Home (`/`):** professional introduction, value proposition, and buttons to the other pages
 - **Projects & Skills (`/projects`):** a responsive grid of projects and awards with descriptions, technologies, GitHub links, and images, followed by skill proficiency meters (Beginner / Intermediate / Advanced) and tools and technologies

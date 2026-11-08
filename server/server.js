@@ -1,7 +1,7 @@
 // Express server: the dynamic back end of the portfolio.
 //  - GET /api/profile   -> profile + skills (JSON)
 //  - GET /api/projects  -> projects & awards (JSON)
-//  - GET /healthz       -> health check for Cloud Run
+//  - GET /api/health    -> health check (Cloud Run reserves paths ending in 'z')
 //  - everything else    -> the built React app from /dist
 import express from 'express';
 import path from 'node:path';
@@ -24,7 +24,7 @@ app.get('/api/projects', (_req, res) => {
   res.json({ projects });
 });
 
-app.get('/healthz', (_req, res) => {
+app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', time: new Date().toISOString() });
 });
 

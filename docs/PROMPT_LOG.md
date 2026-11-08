@@ -183,3 +183,39 @@ Wrote a second plan (saved as `docs/PLAN_V2.md`), which the user approved.
 - **Public or private?** User chose **Public**.
 
 Wrote plan v3 (commit in small steps → create the GitHub repo → `gcloud run deploy`), which the user approved.
+
+**Implementation:** Made 6 commits on `main` and created the public GitHub repo https://github.com/marslenderandrew-hub/fa26_ia3_amarsle with `gh repo create --push`.
+
+### Prompt 16
+> is this a new project
+
+(Asked while rejecting the first `gcloud run deploy` attempt.)
+
+**AI response:** Explained that the deploy goes into the existing Google Cloud project "My First Project" and adds a new Cloud Run service called `portfolio` next to the existing `hello-api` and `hello-api-v2` services, which would not be touched.
+
+### Prompt 17
+> The same project is fine
+
+**AI response:** Ran `gcloud run deploy portfolio --source .`. The source upload succeeded, but the build failed with a 403: the default compute service account lacked `storage.objects.get` on the Cloud Run source bucket. Proposed granting it `roles/run.builder` (Google's documented fix) and asked for approval.
+
+### Prompt 18
+> No lets wait. I dont want this to mess up my other things in that project as well. let me clarify this is how we are supposed to do it first
+
+**AI response:** Paused the deploy. No permissions were changed. Summarized the situation so the user can check with the instructor.
+
+### Prompt 19
+> If we go ahead and change it, will it mess up my other project int here
+
+**AI response:** Checked the project (read-only). `hello-api` and `hello-api-v2` both run as the default compute service account, which already has `run.admin`, `artifactregistry.writer`, `logging.logWriter`, `iam.serviceAccountUser`, and `aiplatform.user`. Explained that adding a role only adds permissions; it does not redeploy or change existing services. The only effect on them is that their runtime identity gains a minor permission they won't use. Gave the one-line command to undo the change.
+
+### Prompt 20
+> lets do it
+
+**AI response:**
+- Granted `roles/run.builder` to `892552793261-compute@developer.gserviceaccount.com`.
+- Re-ran `gcloud run deploy portfolio --source . --region us-central1 --allow-unauthenticated`. It succeeded with revision `portfolio-00001-58l`.
+- **Live URL:** https://portfolio-892552793261.us-central1.run.app
+- Verified that `/`, `/projects`, `/contact`, `/api/profile`, `/api/projects`, and `/images/headshot.png` return 200 on the live site.
+- Confirmed the other services were not affected: `hello-api` returns 200, and `hello-api-v2` is Ready, still on its Nov 7 revision, and serves `/docs` and `/hello` (its root path has never had a route).
+- Found that `/healthz` returned Google's own 404 because Cloud Run reserves URL paths ending in "z". Renamed the endpoint to `/api/health` and redeployed.
+- Added the live URL and the repo link to the README.
