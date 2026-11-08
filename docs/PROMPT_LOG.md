@@ -239,3 +239,8 @@ Wrote plan v3 (commit in small steps → create the GitHub repo → `gcloud run 
 > Now I need to submit all of my items. I would like to re commit and merge to the main branch to update it all. For the submition. I need to save a .zip file of my git repository inclduiong my CLAUDE.md, my plan, prompt and any other files.
 
 **AI response:** Committed the reflection (written by the user), README updates, and prompt log on `docs/reflection`, merged the branch into `main`, and created a `.zip` of the repository's tracked files (no `node_modules`, `dist`, or secrets) for submission.
+
+### Prompt 25
+> Ok I did that, Yes do that
+
+**AI response:** Committed the user's reflection fixes ("JavaScript" and the "fix that" typo), merged them into `main`, pushed `main` to GitHub, and rebuilt the submission zip.
