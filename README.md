@@ -38,11 +38,12 @@ Tested in Chrome DevTools device mode:
 
 | Viewport | Size | Result |
 |---|---|---|
-| Mobile (iPhone SE) | 375 × 667 | _to be filled in_ |
-| Tablet (iPad) | 768 × 1024 | _to be filled in_ |
-| Desktop | 1440 × 900 | _to be filled in_ |
+| Mobile (iPhone SE) | 375 × 667 | Works|
+| Tablet (iPad) | 768 × 1024 | Works |
+| Desktop | 1440 × 900 | Works |
 
 ## Repository documents
 - `CLAUDE.md`: rules file for the AI assistant
 - `docs/PLAN.md`: original plan produced by the AI assistant
 - `docs/PROMPT_LOG.md`: prompt log of the vibe-coding session
+- [`REFLECTION.md`](REFLECTION.md): my reflection on the project

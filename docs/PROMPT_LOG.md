@@ -219,3 +219,23 @@ Wrote plan v3 (commit in small steps → create the GitHub repo → `gcloud run 
 - Confirmed the other services were not affected: `hello-api` returns 200, and `hello-api-v2` is Ready, still on its Nov 7 revision, and serves `/docs` and `/hello` (its root path has never had a route).
 - Found that `/healthz` returned Google's own 404 because Cloud Run reserves URL paths ending in "z". Renamed the endpoint to `/api/health` and redeployed.
 - Added the live URL and the repo link to the README.
+
+### Prompt 21
+> To recap we have finished the site and everything looks great. I now need to include a reflection section in the markdown fil. This is where i Manuallyu answer questions that i have been given. Does this make sense? DO we have a markdown file?
+
+**AI response:** Listed the repo's markdown files (README, CLAUDE.md, and the docs/ plans and prompt log). Recommended either a Reflection section in the README or a separate `REFLECTION.md`, and asked for the questions.
+
+### Prompt 22
+> The assignemktn says it must be saVED AS A MARKDOWN FILE. Im not too sure what that means
+
+**AI response:** Explained that it means a `.md` file (plain text with simple formatting symbols) rather than Word, PDF, or Google Docs. Recommended a separate `REFLECTION.md`.
+
+### Prompt 23
+> Perfect lets do it
+
+**AI response:** Created the `docs/reflection` branch, added a `REFLECTION.md` template with placeholder questions for the user to answer by hand, and linked it from the README.
+
+### Prompt 24
+> Now I need to submit all of my items. I would like to re commit and merge to the main branch to update it all. For the submition. I need to save a .zip file of my git repository inclduiong my CLAUDE.md, my plan, prompt and any other files.
+
+**AI response:** Committed the reflection (written by the user), README updates, and prompt log on `docs/reflection`, merged the branch into `main`, and created a `.zip` of the repository's tracked files (no `node_modules`, `dist`, or secrets) for submission.
